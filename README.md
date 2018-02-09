@@ -61,7 +61,7 @@ ErrorDocument 503 /error.php
 &lt;/Directory&gt;
 </pre>
 
-You will need to localy change the resolving process of the domin cloudcoin.co in your 'hosts' file.
+You will need to localy change the resolving process of the domain cloudcoin.co in your 'hosts' file.
 
 Afterwards, the server list can be downloaded from the following URL
 

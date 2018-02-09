@@ -2,8 +2,10 @@
 
 
 define('CLASSDIR', 'classes');
-define('TMPDIR', 'tmp');
+define('TEMPLATEDIR', 'templates');
 
+define('CONFIG_USER', 'raida');
+define('CONFIG_PASSWORD', 'raida');
 
 
 define('SOCKET_TIMEOUT', 10);

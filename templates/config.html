@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>RAIDA configurator</title>
+
+
+
+
+<style>
+body {
+	background: #eee;
+	width: 100%;
+	font-family: Verdana;
+	color: #333;
+}
+.wrapper {
+	padding-top: 20px;
+	
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+	
+}
+
+.form {
+	width: 600px;
+	margin: 0 auto;
+}
+
+textarea {
+	width: 100%;
+}
+
+input.button {
+	padding: 10px 16px;
+	line-height: 1.471;
+	white-space: normal;
+	color: #ffffff;
+	background-color: #00aae7;
+	margin-top: 12px;
+	display: inline-block;
+	cursor: pointer;
+	border: 0;
+	font-size:1.4em;
+}
+
+.msg {
+	padding-bottom: 12px;
+}
+
+</style>
+
+</head>
+
+<body>
+<div class="wrapper">
+	<h1>RAIDA Configurator</h1>
+
+	<div class="msg" id="msgval">{{msg}}</div>
+
+	<div class="form">
+		<form name="config" method="post" action="/service/config">
+		<textarea name="config" cols="20" rows="40">{{json}}</textarea>
+		<br>&nbsp;<br>
+		<input type="submit" value="SUBMIT" class="button">
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+	setTimeout(function() {
+		var e = document.getElementById("msgval")
+		e.style.visibility = 'hidden'
+	}, 3000);
+</script>
+</body>
+
+</html>
+

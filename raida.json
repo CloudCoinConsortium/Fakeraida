@@ -1,0 +1,106 @@
+{
+    "timeout": "1",
+    "detectResult": "fail",
+    "raida": {
+        "raida0": {
+            "timeout": "10",
+            "detectResult": "inherit"
+        },
+        "raida1": {
+            "timeout": "20",
+            "detectResult": "inherit"
+        },
+        "raida2": {
+            "timeout": "0",
+            "detectResult": "pass"
+        },
+        "raida3": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida4": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida5": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida6": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida7": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida8": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida9": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida10": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida11": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida12": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida13": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida14": {
+            "timeout": "10",
+            "detectResult": "pass"
+        },
+        "raida15": {
+            "timeout": "2",
+            "detectResult": "fail"
+        },
+        "raida16": {
+            "timeout": "20",
+            "detectResult": "pass"
+        },
+        "raida17": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida18": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida19": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida20": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida21": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida22": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida23": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        },
+        "raida24": {
+            "timeout": "0",
+            "detectResult": "inherit"
+        }
+    }
+}
