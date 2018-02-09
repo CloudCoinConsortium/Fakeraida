@@ -48,7 +48,7 @@ ErrorDocument 408 /error.php
 ErrorDocument 500 /error.php
 ErrorDocument 503 /error.php
 
-<Directory /path/to/docroot>
+&lt;Directory /path/to/docroot&gt;
         RewriteEngine on
 
 	Allow from all
@@ -58,7 +58,7 @@ ErrorDocument 503 /error.php
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteRule ^(.*)$ /index.php?service=%1 [L,QSA]
-</Directory>
+&lt;/Directory&gt;
 </pre>
 
 You will need to localy change the resolving process of the domin cloudcoin.co in your 'hosts' file.
