@@ -1,7 +1,13 @@
 {
     "timeout": "0",
     "detectResult": "pass",
-    "mdcoins": "inherit",
+    "mdcoins": [
+        "pass",
+        "fail",
+        "inherit",
+        "inherit",
+        "error"
+    ],
     "raida": {
         "raida0": {
             "timeout": "inherit",
@@ -17,7 +23,7 @@
             "timeout": "inherit",
             "detectResult": "inherit",
             "mdcoins": [
-
+                "pass"
             ]
         },
         "raida3": {

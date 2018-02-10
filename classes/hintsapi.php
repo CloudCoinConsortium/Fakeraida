@@ -17,31 +17,43 @@
  *
  */
 
-if (version_compare(PHP_VERSION, '5.4.0', '<')) {
-	throw new Exception('This SDK requires PHP version 5.4 or higher.');
-}
+namespace FakeRAIDA;
 
-if (!extension_loaded("json")) {
-	throw new Exception('This SDK requires PHP JSON module');
-}
+class hintsAPI extends HTTPAPI {
 
-require "config.php";
+	function __construct($args) {
+		$this->url = $args['url'];
 
-date_default_timezone_set("UTC");
+                parent::__construct($this->url);
+        }
 
-spl_autoload_register(function($class) {
-	$prefix = "FakeRAIDA";
- 
-	$baseDir = __DIR__;
-	$len = strlen($prefix);
-	if (strncmp($prefix, $class, $len) !== 0) {
-		return;
+	private function buildRequest() {
+		return "";
 	}
-	$relativeClass = substr($class, $len);
-	$file = $baseDir . "/" . CLASSDIR . str_replace("\\", "/", $relativeClass) . '.php';
-	$file = strtolower($file);
 
-	if (file_exists($file)) {
-		require $file;
-	}
-});
+	public function doRequest($params) {
+
+		$reqParams = [];
+		foreach ($params as $k => $v) {
+			$reqParams[] = "$k=$v";
+		}
+
+		$params = join("&", $reqParams);
+		$url = $this->url . "?$params";
+
+		Logger::debug("Requesting $url");
+
+		$request = $this->buildRequest();
+		$rv = $this->doRequestCommonURL($request, $url);
+		if (!$rv) {
+			$this->error = "Request failed. See logs for the details";
+			return null;
+		}
+
+		return $rv;
+        }
+
+
+
+
+}
