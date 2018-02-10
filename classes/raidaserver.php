@@ -32,6 +32,8 @@ class RAIDAServer {
 	const DR_ERROR = "error";
 	const DR_EMPTY = "empty";
 
+	const MAX_MDCOINS = 200;
+
 	private $configurator;
 	private $briefOutput;
 	private $config;
@@ -86,7 +88,6 @@ class RAIDAServer {
 		];
 
 		throw new FakeRAIDAException($obj);
-//		$this->output($obj);
 	}
 
 	public function output($obj) {
@@ -99,7 +100,7 @@ class RAIDAServer {
 		echo $data;
 	}
 
-	public function runService($service, $params) {
+	public function runService($service, $params, $postParams = []) {
 
 		$service = strtolower($service);
 		$service = ucfirst($service);
@@ -115,7 +116,12 @@ class RAIDAServer {
 			unset($params['b']);
 		}
 
-		$this->$method($params);
+		if (count($postParams > 0)) {
+			Logger::debug("Post: " . print_r($postParams, true));
+			$this->$method($params, $postParams);
+		} else {
+			$this->$method($params);
+		}
 	}
 
 	private function getResponseTemplate($message, $status = "ready") {
@@ -187,38 +193,48 @@ class RAIDAServer {
 					if ($rv == "inherit")
 						continue;
 
+					if ($rk == "mdcoins") {
+						$rv = array_map(function($item) use ($myRAIDA, $config) {
+							if ($item == "inherit") {
+								$item = $myRAIDA->detectResult;
+								if ($item == "inherit")
+									$item = $config->detectResult;
+							}		
+
+							return $item;
+						}, $rv);
+					}
+
 					$this->config[$rk] = $rv;
 				}
 
 				continue;
 			}
 
-			$this->config[$k] = $v;
+			if ($k == "mdcoins") {
+				if ($v == "inherit")
+					$v = [];
+
+				$v = array_map(function($item) use ($config) {
+					if ($item == "inherit")
+						$item = $config->detectResult;
+
+					return $item;
+				}, $v);
+			}
+
+			if (!isset($this->config[$k]))
+				$this->config[$k] = $v;
 		}
+
+		Logger::debug("Resulting config: " . print_r($this->config, true));
 	}
 
-	private function __serviceDetect($params) {
-		foreach (["nn", "sn", "an", "pan", "denomination"] as $k) {
-			if (!isset($params[$k])) {
-				if ($this->failError())
-					return;
-
-				$errorMsg = "GET Parameters: You must provide a nn, sn, an, pan and denomination. $k";
-				$obj = $this->getResponseTemplate($errorMsg, "fail");
-				$this->output($obj);
-
-				return;
-			}
-		}
-
-		$sn = intval($params['sn']);
-		$nn = intval($params['nn']);
-		$denomination = intval($params['denomination']);
-
-		$an = $params['an'];
-		$pan = $params['pan'];
+	private function verifyDetectParams($nn, $sn, $an, $pan, $denomination) {
+		Logger::debug("Verify $nn, $sn, $an, $pan, $denomination");
 
 		$errorMsg = "";
+
 		if (!$this->isValidDenomination($denomination)) {
 			$errorMsg = "Denomination: The unit's Denomination was out of range.";
 		} else if (!$this->isValidNn($nn)) { 
@@ -228,7 +244,7 @@ class RAIDAServer {
 		} else if (!$this->isValidGUID($an)) {
 			$errorMsg = "AN: The unit's Authenticity Number was out of range.";
 		} else if (!$this->isValidGUID($pan)) {
-			$errorMsg = "PAN: The unit\'s Proposed Authenticity Number was out of range.";
+			$errorMsg = "PAN: The unit's Proposed Authenticity Number was out of range.";
 		} else {
 			$correctDenomination = $this->getDenominationBySn($sn);
 			if ($correctDenomination != $denomination) {
@@ -236,6 +252,126 @@ class RAIDAServer {
 			}
 		}
 
+		return $errorMsg;
+	}
+
+	private function getDetectMessage($result, $denomination) {
+		Logger::debug("Detect message for result $result");
+
+		if ($result == self::DR_PASS) {
+			$message = "Authentic: The unit is an authentic $denomination-unit. Your Proposed Authenticity Number is now the new Authenticty Number. Update your file.";
+		} else if ($result == self::DR_FAIL) {
+			$message = "Counterfeit: The unit failed to authenticate on this server. You may need to fix it on other servers.";
+		} else {
+			$message = "Error";
+		}
+
+		return $message;
+	}
+
+	private function __serviceMulti_detect($params, $postParams) {
+		$pCount = false;
+		foreach (["nns", "sns", "ans", "pans", "denomination"] as $k) {
+			if (!isset($postParams[$k]) || count($postParams[$k]) == 0) {
+				if ($this->failError())
+					return;
+
+				$errorMsg = "POST Parameters: You must provide a nns, sns, ans, pans and denomination.";
+				$obj = $this->getResponseTemplate($errorMsg, "fail");
+				$this->output($obj);
+		
+				return;
+			}
+
+			if ($pCount !== false && count($postParams[$k]) != $pCount) {
+				if ($this->failError())
+					return;
+
+				$errorMsg = "Length: Arrays not all the same length (nn,sn,an,denominations).";
+				$obj = $this->getResponseTemplate($errorMsg, "fail");
+				$this->output($obj);
+		
+				return;
+			}
+
+			$pCount = count($postParams[$k]);
+
+
+			if ($pCount > self::MAX_MDCOINS) {
+				if ($this->failError())
+					return;
+
+				$errorMsg = "Length: Too many coins attached.";
+				$obj = $this->getResponseTemplate($errorMsg, "fail");
+				$this->output($obj);
+	
+				return;
+			}
+		}
+
+		$this->mergeConfig();
+		if ($this->config['timeout'])
+			sleep($this->config['timeout']);
+
+		$messages = [];
+		for ($i = 0; $i < $pCount; $i++) {
+			$sn = intval($postParams['sns'][$i]);
+			$nn = intval($postParams['nns'][$i]);
+			$an = $postParams['ans'][$i];
+			$pan = $postParams['pans'][$i];
+			$denomination = intval($postParams['denomination'][$i]);
+
+			$errorMsg = $this->verifyDetectParams($nn, $sn, $an, $pan, $denomination);
+			if ($errorMsg) {
+				$obj = $this->getResponseTemplate($errorMsg, "fail");
+				$obj['sn'] = $sn;
+	
+				$messages[] = $obj;
+				continue;
+			}
+
+			if ($i < count($this->config['mdcoins']))
+				$result = $this->config['mdcoins'][$i];
+			else
+				$result = $this->config['detectResult'];
+
+			if ($result == self::DR_EMPTY) {
+				$messages[] = [];
+				continue;
+			}
+
+			$message = $this->getDetectMessage($result, $denomination);
+			$obj = $this->getResponseTemplate($message);
+			$obj['sn'] = $sn;
+			$obj['status'] = $result;
+
+			$messages[] = $obj;
+		}
+
+		$this->output($messages);
+	}
+
+	private function __serviceDetect($params) {
+		foreach (["nn", "sn", "an", "pan", "denomination"] as $k) {
+			if (!isset($params[$k])) {
+				if ($this->failError())
+					return;
+
+				$errorMsg = "GET Parameters: You must provide a nn, sn, an, pan and denomination.";
+				$obj = $this->getResponseTemplate($errorMsg, "fail");
+				$this->output($obj);
+
+				return;
+			}
+		}
+
+		$sn = intval($params['sn']);
+		$nn = intval($params['nn']);
+		$an = $params['an'];
+		$pan = $params['pan'];
+		$denomination = intval($params['denomination']);
+
+		$errorMsg = $this->verifyDetectParams($nn, $sn, $an, $pan, $denomination);
 		if ($errorMsg) {
 			if ($this->failError())
 				return;
@@ -248,7 +384,6 @@ class RAIDAServer {
 		}
 
 		$this->mergeConfig();
-
 		if ($this->config['timeout'])
 			sleep($this->config['timeout']);
 
@@ -263,13 +398,7 @@ class RAIDAServer {
 			return;
 		}
 
-		if ($result == self::DR_PASS) {
-			$message = "Authentic: The unit is an authentic $denomination-unit. Your Proposed Authenticity Number is now the new Authenticty Number. Update your file.";
-		} else if ($result == self::DR_FAIL) {
-			$message = "Counterfeit: The unit failed to authenticate on this server. You may need to fix it on other servers.";
-		} else {
-			$message = "Error";
-		}
+		$message = $this->getDetectMessage($result, $denomination);
 
 		$obj = $this->getResponseTemplate($message);
 		$obj['sn'] = $sn;

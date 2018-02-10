@@ -1,106 +1,134 @@
 {
-    "timeout": "1",
-    "detectResult": "fail",
+    "timeout": "0",
+    "detectResult": "pass",
+    "mdcoins": "inherit",
     "raida": {
         "raida0": {
-            "timeout": "10",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida1": {
-            "timeout": "20",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida2": {
-            "timeout": "0",
-            "detectResult": "pass"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": [
+
+            ]
         },
         "raida3": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida4": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida5": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida6": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida7": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida8": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida9": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida10": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida11": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida12": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida13": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida14": {
-            "timeout": "10",
-            "detectResult": "pass"
+            "timeout": "1",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida15": {
-            "timeout": "2",
-            "detectResult": "fail"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida16": {
-            "timeout": "20",
-            "detectResult": "pass"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida17": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida18": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida19": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida20": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida21": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida22": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida23": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         },
         "raida24": {
-            "timeout": "0",
-            "detectResult": "inherit"
+            "timeout": "inherit",
+            "detectResult": "inherit",
+            "mdcoins": "inherit"
         }
     }
 }

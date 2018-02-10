@@ -102,6 +102,22 @@ class Configurator {
 					return false;
 				}
 			}
+
+			if ($k == "mdcoins") {
+				if ($v != "inherit" && !is_array($v) || count($v) > RAIDAServer::MAX_MDCOINS) {
+					$error = "Invalid mdcoins length";
+					return false;
+				} else {
+					foreach ($v as $coinResult) {
+						if (!in_array($coinResult, RAIDAServer::getResults())) {
+							if ($coinResult != "inherit") {
+								$error = "Invalid mdCoin detectResult: $coinResult";
+								return false;
+							}
+						}
+					}
+				}
+			}
 			
 			if ($k == "raida") {
 				foreach ($v as $rk => $rv) {
@@ -124,6 +140,23 @@ class Configurator {
 						if ($rik == "timeout" && $riv !== "inherit") {
 							$riv = "" . intval($riv);
 						}
+					
+						if ($rik == "mdcoins") {
+							if ($riv != "inherit" && !is_array($riv) || count($riv) > RAIDAServer::MAX_MDCOINS) {
+								$error = "Invalid mdcoins length";
+								return false;
+							} else {
+								foreach ($riv as $rcr) {
+									if (!in_array($rcr, RAIDAServer::getResults())) {
+										if ($rcr != "inherit") {
+											$error = "Invalid mdCoin result: $rcr";
+											return false;
+										}
+									}
+								}
+							}
+						}
+
 						
 						$baseConfig[$k][$rk][$rik] = $riv;
 					}
@@ -147,6 +180,7 @@ class Configurator {
 		$config = [
 			"timeout" => "0",
 			"detectResult" => "pass",
+			"mdcoins" => [],
 			"raida" => []
 		];
 
@@ -154,7 +188,8 @@ class Configurator {
 		for ($i = 0; $i < 25; $i++) {
 			$config['raida']['raida' . $i] = [
 				"timeout" => "inherit",
-				"detectResult" => "inherit"
+				"detectResult" => "inherit",
+				"mdcoins" => "inherit",
 			];
 		}
 

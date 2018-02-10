@@ -69,4 +69,33 @@ Afterwards, the server list can be downloaded from the following URL
 https://www.cloudcoin.co/servers.html
 </pre>
 
+RAIDA behavior is determined by a config file located at the service https://conf.srv.cloudcoin.digital/service/config
+
+Config is in JSON format and has hierarhical architecture. The keyword "inherit" means that the value will be inherited from a parent node.
+
+"mdcoins" key defines an array of results for *multidetect* service. If one of the values is "inherit" than the result for the coin will be retrieved from "detectResult" key.
+
+For instance,
+
+<pre>
+"detectResult" : "fail",
+"mdcoins" : ["pass", "pass", "fail", "inherit", "pass"]
+</pre>
+
+If seven coins are being detected, they will receive these results:
+
+<pre>
+pass, pass, fail, fail, pass, fail, fail
+</pre>
+
+
+
+
+
+
+
+
+
+
+
 

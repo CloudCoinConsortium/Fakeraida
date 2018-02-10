@@ -20,7 +20,7 @@ try {
 	}
 
 	$raidaServer = new RAIDAServer($_SERVER['SERVER_NAME']);
-	$raidaServer->runService($_GET['service'], $_GET);
+	$raidaServer->runService($_GET['service'], $_GET, $_POST);
 } catch (FakeRAIDAException $e) {
 	echo $e->getMessage();
 }
