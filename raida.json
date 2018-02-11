@@ -8,133 +8,184 @@
         "inherit",
         "error"
     ],
+    "hint": "1:20",
     "raida": {
         "raida0": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "3885168a36d3f253d806eb1ba83e60feb27d528cae03",
+            "hint": "1:10"
         },
         "raida1": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "4a04f41e2c91d6aa81f82104f140ac4c0a537d32c903",
+            "hint": "1:10"
         },
         "raida2": {
             "timeout": "inherit",
             "detectResult": "inherit",
             "mdcoins": [
                 "pass"
-            ]
+            ],
+            "rn": "d779e0f70dbcbd4cba2a1879d1831862f8128701f3b2",
+            "hint": "1:10"
         },
         "raida3": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "8fa6cb435208ec45c13127dbd7b08268954bb0d6b038",
+            "hint": "1:10"
         },
         "raida4": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "6516081b58b40ad0f4888f61894bb45718a34154d98e",
+            "hint": "1:10"
         },
         "raida5": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "70e7d5c72e16b56444df7dc1240f275729cedd815c56",
+            "hint": "1:10"
         },
         "raida6": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "c18b2051d76fbfe1fb465968fb9d45079b781bf1a5e0",
+            "hint": "1:10"
         },
         "raida7": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "a36ca75c74f97195f527d00301f8bb00442727639e34",
+            "hint": "1:10"
         },
         "raida8": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "ee81142bfb1097890f74662964abc9e94e65b89cc5ba",
+            "hint": "1:10"
         },
         "raida9": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "3cab081b161e87d381ba151d45fd9d1f12ed2872bb06",
+            "hint": "1:10"
         },
         "raida10": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "e23ae452f30e6eb4febfd97d89ae333f7394f91e4189",
+            "hint": "1:10"
         },
         "raida11": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "d12a81437037c96bf0477d6afdda4e65d072dd19c159",
+            "hint": "1:10"
         },
         "raida12": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "7d3e0c855ef30681902f8c6fbcfff82ba312ccad2da9",
+            "hint": "1:10"
         },
         "raida13": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "21174c878e35020ad40b2743edde312de29527d9aed0",
+            "hint": "1:10"
         },
         "raida14": {
             "timeout": "1",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "21174c878e350220ad40b2743edde312de29527d9aed",
+            "hint": "1:25"
         },
         "raida15": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "2e818637f130b0266bd1d9c5d3a1587a18750fe71730",
+            "hint": "1:10"
         },
         "raida16": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "8c7fa26520c0c18e737a2a95039f16defde3784291a3",
+            "hint": "1:10"
         },
         "raida17": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "c56eb5e9327108317f19c07bd214818652d1e09f686d",
+            "hint": "1:10"
         },
         "raida18": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "95540a225c9021405c05a6a612a2b05ff5684c9a6c58",
+            "hint": "1:10"
         },
         "raida19": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "3209e6adbaf5eb07eb170795694e6b643190f93285fb",
+            "hint": "1:10"
         },
         "raida20": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "d17bcfd393b7e2c3f1ed53a4b0fcdb3c1312e1fdf79e",
+            "hint": "1:10"
         },
         "raida21": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "6dfb9e7f75bea864ac19d3a8fbd5c744433ac6aeb40f",
+            "hint": "1:10"
         },
         "raida22": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "2df4145e9441afaeae87536b2e38fe1d75d40a8e3d7b",
+            "hint": "1:10"
         },
         "raida23": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "1f04fe6bb8d76b038fda63e67e5e46b35a924a472779",
+            "hint": "1:10"
         },
         "raida24": {
             "timeout": "inherit",
             "detectResult": "inherit",
-            "mdcoins": "inherit"
+            "mdcoins": "inherit",
+            "rn": "4fe5d3c74b237e5372540b7ce3ecd82b2828b951ddb3",
+            "hint": "1:10"
         }
     }
 }

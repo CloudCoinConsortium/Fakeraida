@@ -128,6 +128,11 @@ class Configurator {
 
 					$raidaInstance = $config->$k->$rk;
 					foreach ($raidaInstance as $rik => $riv) {
+						if (!isset($baseConfig[$k][$rk][$rik])) {
+							$error = "Unknown key: $rik";
+							return false;
+						}
+
 						if ($rik == "detectResult") {
 							if (!in_array($riv, RAIDAServer::getResults())) {
 								if ($riv !== "inherit") {
@@ -157,7 +162,6 @@ class Configurator {
 							}
 						}
 
-						
 						$baseConfig[$k][$rk][$rik] = $riv;
 					}
 				}
@@ -177,11 +181,40 @@ class Configurator {
 	}
 
 	private function formConfig() {
+		$rns = [
+			"3885168a36d3f253d806eb1ba83e60feb27d528cae03", //0
+			"4a04f41e2c91d6aa81f82104f140ac4c0a537d32c903",
+			"d779e0f70dbcbd4cba2a1879d1831862f8128701f3b2", //2
+			"8fa6cb435208ec45c13127dbd7b08268954bb0d6b038",
+			"6516081b58b40ad0f4888f61894bb45718a34154d98e",
+			"70e7d5c72e16b56444df7dc1240f275729cedd815c56",
+			"c18b2051d76fbfe1fb465968fb9d45079b781bf1a5e0",
+			"a36ca75c74f97195f527d00301f8bb00442727639e34", //7
+			"ee81142bfb1097890f74662964abc9e94e65b89cc5ba",
+			"3cab081b161e87d381ba151d45fd9d1f12ed2872bb06",
+			"e23ae452f30e6eb4febfd97d89ae333f7394f91e4189",
+			"d12a81437037c96bf0477d6afdda4e65d072dd19c159",
+			"7d3e0c855ef30681902f8c6fbcfff82ba312ccad2da9",
+			"21174c878e35020ad40b2743edde312de29527d9aed0",
+			"c27b973d6fa7825db2959c8dbe45122a7259b99bdba1", //14
+			"2e818637f130b0266bd1d9c5d3a1587a18750fe71730",
+			"8c7fa26520c0c18e737a2a95039f16defde3784291a3",
+			"c56eb5e9327108317f19c07bd214818652d1e09f686d",
+			"95540a225c9021405c05a6a612a2b05ff5684c9a6c58", //18
+			"3209e6adbaf5eb07eb170795694e6b643190f93285fb",
+			"d17bcfd393b7e2c3f1ed53a4b0fcdb3c1312e1fdf79e",
+			"6dfb9e7f75bea864ac19d3a8fbd5c744433ac6aeb40f",
+			"2df4145e9441afaeae87536b2e38fe1d75d40a8e3d7b", //22 
+			"1f04fe6bb8d76b038fda63e67e5e46b35a924a472779",
+			"4fe5d3c74b237e5372540b7ce3ecd82b2828b951ddb3"  //24
+		];
+
 		$config = [
 			"timeout" => "0",
 			"detectResult" => "pass",
 			"mdcoins" => [],
-			"raida" => []
+			"hint" => "1:10",
+			"raida" => [],
 		];
 
 
@@ -190,6 +223,8 @@ class Configurator {
 				"timeout" => "inherit",
 				"detectResult" => "inherit",
 				"mdcoins" => "inherit",
+				"rn" => $rns[$i],
+				"hint" => "1:10"
 			];
 		}
 

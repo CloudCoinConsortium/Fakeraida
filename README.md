@@ -88,7 +88,15 @@ If seven coins are being detected, they will receive these results:
 pass, pass, fail, fail, pass, fail, fail
 </pre>
 
+Keys description:
 
+<pre>
+"timeout" - number of seconds to wait before returning a response
+"detectResult" - result to return for detect/get_ticket and multi_detect services. Possible values are "pass", "fail", "error", "empty", "inherit"
+"mdcoins" - array of returns for multi_detect services. It specifies the result for each coin submitted. If the length of the array is less than the number of sent coins, than the result is taken from "detectResult" key.
+"rn" - ticket to return for get_ticket service
+"hint" - value to return for hints service
+</pre>
 
 
 
