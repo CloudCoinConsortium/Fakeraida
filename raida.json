@@ -19,7 +19,7 @@
         },
         "raida1": {
             "timeout": "inherit",
-            "detectResult": "inherit",
+            "detectResult": "fail",
             "mdcoins": "inherit",
             "rn": "4a04f41e2c91d6aa81f82104f140ac4c0a537d32c903",
             "hint": "1:10"
